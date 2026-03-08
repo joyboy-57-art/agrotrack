@@ -6,25 +6,14 @@ import { startCronJobs } from './utils/cronJobs.js';
 
 const PORT = process.env.PORT || 5000;
 
-// If running in Vercel serverless environment, export the app rather than starting the server
-if (process.env.VERCEL) {
-    // ensure initialization tasks run once
-    (async () => {
-        await fixMobileColumn();
-        await ensureAdminExists();
-        startCronJobs();
-    })();
-    export default app;
-} else {
-    // Initialize Database, Admin, Cron Jobs and Start Server
-    (async () => {
-        await fixMobileColumn();
-        await ensureAdminExists();
-        startCronJobs();
+// Initialize Database, Admin, Cron Jobs and Start Server
+(async () => {
+    await fixMobileColumn();
+    await ensureAdminExists();
+    startCronJobs();
 
-        app.listen(PORT, () => {
-            console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-        });
-    })();
-}
+    app.listen(PORT, () => {
+        console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+    });
+})();
 
