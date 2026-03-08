@@ -4,52 +4,51 @@ services:
     name: agrotrack-backend
     runtime: node
     rootDir: server
-    buildCommand: npm install --production=false
-    startCommand: node server.js
+    buildCommand: npm install
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
         value: 10000
       - key: DB_HOST
-        fromSecret: db_host
+        value: YOUR_DB_HOST_HERE
       - key: DB_USER
-        fromSecret: db_user
+        value: YOUR_DB_USER_HERE
       - key: DB_PASSWORD
-        fromSecret: db_password
+        value: YOUR_DB_PASSWORD_HERE
       - key: DB_NAME
-        fromSecret: db_name
+        value: YOUR_DB_NAME_HERE
       - key: JWT_SECRET
-        fromSecret: jwt_secret
+        value: YOUR_JWT_SECRET_HERE
       - key: FAST2SMS_API_KEY
-        fromSecret: fast2sms_api_key
+        value: YOUR_FAST2SMS_API_KEY_HERE
       - key: EMAIL_USER
-        fromSecret: email_user
+        value: YOUR_EMAIL_USER_HERE
       - key: EMAIL_PASS
-        fromSecret: email_pass
+        value: YOUR_EMAIL_PASS_HERE
 
   # Frontend Service
   - type: web
     name: agrotrack-frontend
     runtime: static
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: ./frontend/dist
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    rootDir: frontend
     envVars:
       - key: VITE_API_URL
-        value: https://agrotrack-backend.onrender.com/api
+        value: YOUR_BACKEND_URL_HERE/api
 
   # Client Service (if different from frontend)
   - type: web
     name: agrotrack-client
     runtime: static
-    buildCommand: cd client && npm install && npm run build
-    staticPublishPath: ./client/dist
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    rootDir: client
     envVars:
       - key: VITE_API_URL
-        value: https://agrotrack-backend.onrender.com/api
+        value: YOUR_BACKEND_URL_HERE/api
 
-# Database (PostgreSQL - you'll need to migrate from MySQL)
-databases:
-  - name: agrotrack-db
-    databaseName: agrotrack
-    user: agrotrack_user
+# Note: Using external MySQL database (PlanetScale, AWS RDS, etc.)
+# Remove the databases section since we're using MySQL, not PostgreSQL
