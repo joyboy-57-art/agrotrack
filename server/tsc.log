@@ -1,0 +1,14 @@
+﻿src/config/db.ts(1,22): error TS2307: Cannot find module 'mongoose' or its corresponding type declarations.
+src/config/db.ts(2,35): error TS2307: Cannot find module 'mongodb-memory-server' or its corresponding type declarations.
+src/config/db.ts(3,20): error TS2307: Cannot find module 'dotenv' or its corresponding type declarations.
+src/controllers/bookingController.ts(55,45): error TS7006: Parameter 'eq' implicitly has an 'any' type.
+src/models/Booking.ts(1,22): error TS2307: Cannot find module 'mongoose' or its corresponding type declarations.
+src/models/Equipment.ts(1,22): error TS2307: Cannot find module 'mongoose' or its corresponding type declarations.
+src/models/User.ts(1,22): error TS2307: Cannot find module 'mongoose' or its corresponding type declarations.
+src/models/User.ts(15,40): error TS7006: Parameter 'next' implicitly has an 'any' type.
+src/models/User.ts(16,10): error TS2683: 'this' implicitly has type 'any' because it does not have a type annotation.
+src/models/User.ts(20,5): error TS2683: 'this' implicitly has type 'any' because it does not have a type annotation.
+src/models/User.ts(20,39): error TS2683: 'this' implicitly has type 'any' because it does not have a type annotation.
+src/seed.ts(1,22): error TS2307: Cannot find module 'mongoose' or its corresponding type declarations.
+src/seed.ts(2,20): error TS2307: Cannot find module 'dotenv' or its corresponding type declarations.
+src/server.ts(2,20): error TS2307: Cannot find module 'dotenv' or its corresponding type declarations.

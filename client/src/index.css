@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --agro-50: #f0fdf4;
+  --agro-100: #dcfce7;
+  --agro-200: #bbf7d0;
+  --agro-300: #86efac;
+  --agro-400: #4ade80;
+  --agro-500: #22c55e;
+  --agro-600: #16a34a;
+  --agro-700: #15803d;
+  --agro-800: #166534;
+  --agro-900: #14532d;
+}
+
+@layer base {
+  body {
+    @apply antialiased text-gray-900 font-['Outfit'];
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-agro-600 text-white rounded-2xl font-bold transition-all duration-300 transform active:scale-95 hover:bg-agro-700 hover:shadow-lg hover:shadow-agro-100 flex items-center justify-center;
+  }
+
+  .input-premium {
+    @apply w-full bg-white border-2 border-gray-50 rounded-2xl px-5 py-4 text-gray-700 font-medium transition-all duration-300 focus:outline-none focus:border-agro-500 focus:bg-white focus:ring-4 focus:ring-agro-50 overflow-hidden;
+  }
+
+  .card-premium {
+    @apply bg-white rounded-[2.5rem] border border-gray-100 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-agro-100 hover:-translate-y-2;
+  }
+
+  .badge-premium {
+    @apply px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest;
+  }
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
