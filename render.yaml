@@ -1,0 +1,54 @@
+services:
+  # Backend API Service
+  - type: web
+    name: agrotrack-backend
+    runtime: node
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DB_HOST
+        fromSecret: db_host
+      - key: DB_USER
+        fromSecret: db_user
+      - key: DB_PASSWORD
+        fromSecret: db_password
+      - key: DB_NAME
+        fromSecret: db_name
+      - key: JWT_SECRET
+        fromSecret: jwt_secret
+      - key: FAST2SMS_API_KEY
+        fromSecret: fast2sms_api_key
+      - key: EMAIL_USER
+        fromSecret: email_user
+      - key: EMAIL_PASS
+        fromSecret: email_pass
+
+  # Frontend Service
+  - type: web
+    name: agrotrack-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://agrotrack-backend.onrender.com/api
+
+  # Client Service (if different from frontend)
+  - type: web
+    name: agrotrack-client
+    runtime: static
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: ./client/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://agrotrack-backend.onrender.com/api
+
+# Database (PostgreSQL - you'll need to migrate from MySQL)
+databases:
+  - name: agrotrack-db
+    databaseName: agrotrack
+    user: agrotrack_user
