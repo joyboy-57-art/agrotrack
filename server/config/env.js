@@ -1,10 +1,10 @@
 // This file MUST be imported first before any other module
 // so environment variables are loaded before any module-level code runs.
 
+// Vercel supplies env vars, but during development you can still use a .env file
 try {
-    const dotenv = await import('dotenv');
-    dotenv.default.config();
+    const dotenv = require('dotenv');
+    dotenv.config();
 } catch (error) {
-    // dotenv not available in production, environment variables should be set by Render
-    console.log('Using environment variables from Render (dotenv not loaded)');
+    console.log('dotenv not available, using environment vars directly');
 }
