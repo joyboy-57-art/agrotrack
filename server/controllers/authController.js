@@ -4,8 +4,6 @@ import jwt from 'jsonwebtoken';
 import { JWT_SECRET, JWT_EXPIRES_IN } from '../config/jwt.js';
 import bcrypt from 'bcryptjs';
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const generateToken = (id, role) => {
     return jwt.sign({ id, role }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
